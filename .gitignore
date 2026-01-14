@@ -1,0 +1,5 @@
+frames-for-hero.zip
+.agent/
+.gemini/
+node_modules/
+.DS_Store
