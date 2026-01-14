@@ -682,21 +682,21 @@ document.addEventListener("DOMContentLoaded", () => {
             trigger: "#scrollytelling-hero",
             start: "top top",
             end: "35% top",
-            scrub: 0.5
+            scrub: 1.5
         },
         y: -150, // Parallax movement
-        ease: "none"
+        ease: "power1.out"
     });
     gsap.to(heroText1, {
         scrollTrigger: {
             trigger: "#scrollytelling-hero",
             start: "15% top",
             end: "30% top",
-            scrub: true
+            scrub: 1.5
         },
         opacity: 0,
         filter: "blur(10px)",
-        ease: "power2.in"
+        ease: "power1.inOut"
     });
 
     // Text 2: Slide in from left with blur, parallax, then fade out
@@ -707,12 +707,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 trigger: "#scrollytelling-hero",
                 start: "25% top",
                 end: "40% top",
-                scrub: true
+                scrub: 1.5
             },
             opacity: 1,
             x: 0,
             filter: "blur(0px)",
-            ease: "power2.out"
+            ease: "power1.out"
         }
     );
     // Text 2 parallax
@@ -723,10 +723,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 trigger: "#scrollytelling-hero",
                 start: "25% top",
                 end: "70% top",
-                scrub: 0.5
+                scrub: 1.5
             },
             y: -100,
-            ease: "none"
+            ease: "power1.out"
         }
     );
     gsap.to(heroText2, {
@@ -734,12 +734,12 @@ document.addEventListener("DOMContentLoaded", () => {
             trigger: "#scrollytelling-hero",
             start: "55% top",
             end: "70% top",
-            scrub: true
+            scrub: 1.5
         },
         opacity: 0,
         filter: "blur(10px)",
         x: -50,
-        ease: "power2.in"
+        ease: "power1.inOut"
     });
 
     // Text 3: Slide in from right with blur, parallax, stay visible
@@ -750,12 +750,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 trigger: "#scrollytelling-hero",
                 start: "60% top",
                 end: "75% top",
-                scrub: true
+                scrub: 1.5
             },
             opacity: 1,
             x: 0,
             filter: "blur(0px)",
-            ease: "power2.out"
+            ease: "power1.out"
         }
     );
     // Text 3 parallax
@@ -766,10 +766,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 trigger: "#scrollytelling-hero",
                 start: "60% top",
                 end: "100% top",
-                scrub: 0.5
+                scrub: 1.5
             },
             y: -80,
-            ease: "none"
+            ease: "power1.out"
         }
     );
 
