@@ -348,8 +348,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollIndicator = document.getElementById('scroll-indicator');
     const heroMobileVideo = document.getElementById('hero-mobile-video');
 
-    // Mobile detection - use video for touch devices
-    const isMobileDevice = deviceCapabilities.hasTouch || window.innerWidth <= 768;
+    // Mobile detection - use screen width only (touch detection was triggering on touchscreen laptops)
+    const isMobileDevice = window.innerWidth <= 768;
 
     if (isMobileDevice && heroMobileVideo) {
         // Mobile: Use autoplay video instead of scroll-triggered frames
