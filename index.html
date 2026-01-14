@@ -210,8 +210,16 @@
                     </div>
                 </div>
 
-                <!-- The Canvas -->
+                <!-- The Canvas (Desktop) -->
                 <canvas id="scroll-canvas" class="absolute inset-0 w-full h-full"></canvas>
+
+                <!-- Mobile Video (hidden by default, shown on mobile) -->
+                <video id="hero-mobile-video" 
+                       class="absolute inset-0 w-full h-full object-cover hidden"
+                       src="assets/hero-mobile.mp4"
+                       autoplay muted loop playsinline
+                       aria-hidden="true">
+                </video>
 
                 <!-- Vignette Overlay -->
                 <div

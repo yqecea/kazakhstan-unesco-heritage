@@ -346,6 +346,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const ctx = canvas.getContext('2d');
     const loader = document.getElementById('scroll-loader');
     const scrollIndicator = document.getElementById('scroll-indicator');
+    const heroMobileVideo = document.getElementById('hero-mobile-video');
+
+    // Mobile detection - use video for touch devices
+    const isMobileDevice = deviceCapabilities.hasTouch || window.innerWidth <= 768;
+
+    if (isMobileDevice && heroMobileVideo) {
+        // Mobile: Use autoplay video instead of scroll-triggered frames
+        canvas.style.display = 'none';
+        heroMobileVideo.classList.remove('hidden');
+
+        // Hide loader immediately since video handles its own loading
+        if (loader) {
+            loader.style.display = 'none';
+        }
+
+        // Ensure video plays (iOS fix)
+        heroMobileVideo.play().catch(() => {
+            // Autoplay failed, video will show first frame
+        });
+    } else {
+        // Desktop: Use scroll-triggered frame animation
+        if (heroMobileVideo) {
+            heroMobileVideo.remove(); // Remove video element to save memory
+        }
+    }
 
     // Frame configuration
     const frameCount = 240;
@@ -502,27 +527,31 @@ document.addEventListener("DOMContentLoaded", () => {
             loadNextBatch();
         });
     }
-    preloadFrames();
 
-    // GSAP ScrollTrigger for frame animation
-    gsap.to({}, {
-        scrollTrigger: {
-            trigger: "#scrollytelling-hero",
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 0.3,
-            onUpdate: (self) => {
-                const frameIndex = Math.min(
-                    frameCount - 1,
-                    Math.floor(self.progress * frameCount)
-                );
-                if (frameIndex !== currentFrame) {
-                    currentFrame = frameIndex;
-                    drawFrame(currentFrame);
+    // Only load frames and setup scroll animation on desktop
+    if (!isMobileDevice) {
+        preloadFrames();
+
+        // GSAP ScrollTrigger for frame animation
+        gsap.to({}, {
+            scrollTrigger: {
+                trigger: "#scrollytelling-hero",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 0.3,
+                onUpdate: (self) => {
+                    const frameIndex = Math.min(
+                        frameCount - 1,
+                        Math.floor(self.progress * frameCount)
+                    );
+                    if (frameIndex !== currentFrame) {
+                        currentFrame = frameIndex;
+                        drawFrame(currentFrame);
+                    }
                 }
             }
-        }
-    });
+        });
+    }
 
     // Text Overlay Animations with PARALLAX
     const heroText1 = document.getElementById('hero-text-1');
