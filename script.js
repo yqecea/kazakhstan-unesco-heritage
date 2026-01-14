@@ -354,9 +354,21 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentFrame = 0;
 
     // Set canvas size (debounced for performance)
+    // Store DPR for use in drawFrame
+    let canvasDpr = 1;
+
     function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        // Get device pixel ratio for Retina/HiDPI support
+        const dpr = window.devicePixelRatio || 1;
+        canvasDpr = dpr;
+
+        // Set physical canvas size (multiply by DPR for sharp rendering)
+        canvas.width = window.innerWidth * dpr;
+        canvas.height = window.innerHeight * dpr;
+
+        // Set CSS display size
+        canvas.style.width = `${window.innerWidth}px`;
+        canvas.style.height = `${window.innerHeight}px`;
 
         // Update device capabilities
         deviceCapabilities.viewportWidth = window.innerWidth;
@@ -385,25 +397,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Calculate cover fit
+        // Use CSS dimensions for calculations (account for DPR)
+        const cssWidth = canvas.width / canvasDpr;
+        const cssHeight = canvas.height / canvasDpr;
+
+        // Calculate cover fit based on CSS dimensions
         const imgRatio = img.width / img.height;
-        const canvasRatio = canvas.width / canvas.height;
+        const canvasRatio = cssWidth / cssHeight;
 
         let drawWidth, drawHeight, offsetX, offsetY;
 
         if (canvasRatio > imgRatio) {
-            drawWidth = canvas.width;
-            drawHeight = canvas.width / imgRatio;
+            drawWidth = cssWidth;
+            drawHeight = cssWidth / imgRatio;
             offsetX = 0;
-            offsetY = (canvas.height - drawHeight) / 2;
+            offsetY = (cssHeight - drawHeight) / 2;
         } else {
-            drawHeight = canvas.height;
-            drawWidth = canvas.height * imgRatio;
-            offsetX = (canvas.width - drawWidth) / 2;
+            drawHeight = cssHeight;
+            drawWidth = cssHeight * imgRatio;
+            offsetX = (cssWidth - drawWidth) / 2;
             offsetY = 0;
         }
 
+        // Scale and draw (multiply by DPR for physical pixel drawing)
+        ctx.save();
+        ctx.scale(canvasDpr, canvasDpr);
         ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+        ctx.restore();
     }
 
     // Progressive frame loading with priority
@@ -423,7 +443,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return new Promise((resolve) => {
                 const img = new Image();
                 const paddedIndex = String(frameNum).padStart(3, '0');
-                img.src = `frames/ezgif-frame-${paddedIndex}.jpg`;
+                img.src = `frames/ezgif-frame-${paddedIndex}.webp`;
 
                 img.onload = () => {
                     imagesLoaded++;
@@ -500,35 +520,209 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Text Overlay Animations
+    // Text Overlay Animations with PARALLAX
     const heroText1 = document.getElementById('hero-text-1');
     const heroText2 = document.getElementById('hero-text-2');
     const heroText3 = document.getElementById('hero-text-3');
 
-    // Text 1: Fade out from 20% to 35%
+    // =============================================
+    // FLOATING STAR PARTICLES (disabled on low-power/touch)
+    // =============================================
+    const heroContainer = document.querySelector('#scrollytelling-hero .sticky');
+    const particleCount = deviceCapabilities.hasTouch ? 15 : 30;
+    const particles = [];
+
+    if (!deviceCapabilities.prefersReducedMotion && heroContainer) {
+        // Create particle container
+        const particleLayer = document.createElement('div');
+        particleLayer.className = 'hero-particles-layer';
+        particleLayer.style.cssText = `
+            position: absolute; inset: 0; z-index: 5; pointer-events: none; overflow: hidden;
+        `;
+        heroContainer.appendChild(particleLayer);
+
+        // Generate stars
+        for (let i = 0; i < particleCount; i++) {
+            const star = document.createElement('div');
+            const size = Math.random() * 3 + 1;
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const depth = Math.random() * 0.5 + 0.5; // 0.5-1 for parallax speed
+
+            star.className = 'floating-star';
+            star.style.cssText = `
+                position: absolute;
+                left: ${x}%;
+                top: ${y}%;
+                width: ${size}px;
+                height: ${size}px;
+                background: radial-gradient(circle, rgba(212,175,55,${0.3 + depth * 0.5}) 0%, transparent 70%);
+                border-radius: 50%;
+                opacity: ${0.3 + Math.random() * 0.4};
+                animation: starTwinkle ${2 + Math.random() * 3}s ease-in-out infinite;
+                animation-delay: ${Math.random() * 2}s;
+            `;
+            star.dataset.depth = depth;
+            star.dataset.baseY = y;
+            particles.push(star);
+            particleLayer.appendChild(star);
+        }
+
+        // Add twinkle animation to head
+        if (!document.getElementById('star-twinkle-style')) {
+            const style = document.createElement('style');
+            style.id = 'star-twinkle-style';
+            style.textContent = `
+                @keyframes starTwinkle {
+                    0%, 100% { opacity: 0.3; transform: scale(1); }
+                    50% { opacity: 0.8; transform: scale(1.2); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+
+    // =============================================
+    // CURSOR FOLLOWER LIGHT EFFECT (desktop only)
+    // =============================================
+    let cursorLight = null;
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+
+    if (!deviceCapabilities.hasTouch && heroContainer) {
+        cursorLight = document.createElement('div');
+        cursorLight.className = 'cursor-light';
+        cursorLight.style.cssText = `
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 15;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        `;
+        heroContainer.appendChild(cursorLight);
+
+        // Track mouse
+        heroContainer.addEventListener('mouseenter', () => {
+            if (cursorLight) cursorLight.style.opacity = '1';
+        });
+        heroContainer.addEventListener('mouseleave', () => {
+            if (cursorLight) cursorLight.style.opacity = '0';
+        });
+        heroContainer.addEventListener('mousemove', (e) => {
+            const rect = heroContainer.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+        });
+
+        // Smooth cursor animation
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.1;
+            cursorY += (mouseY - cursorY) * 0.1;
+            if (cursorLight) {
+                cursorLight.style.left = cursorX + 'px';
+                cursorLight.style.top = cursorY + 'px';
+            }
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+    }
+
+    // =============================================
+    // CANVAS ZOOM EFFECT ON SCROLL
+    // =============================================
+    gsap.to(canvas, {
+        scrollTrigger: {
+            trigger: "#scrollytelling-hero",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 1
+        },
+        scale: 1.1,
+        ease: "none"
+    });
+
+    // =============================================
+    // PARALLAX PARTICLE MOVEMENT ON SCROLL
+    // =============================================
+    if (particles.length > 0) {
+        gsap.to({}, {
+            scrollTrigger: {
+                trigger: "#scrollytelling-hero",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 0.5,
+                onUpdate: (self) => {
+                    particles.forEach(star => {
+                        const depth = parseFloat(star.dataset.depth);
+                        const baseY = parseFloat(star.dataset.baseY);
+                        const movement = self.progress * 100 * depth;
+                        star.style.top = `${baseY - movement * 0.3}%`;
+                    });
+                }
+            }
+        });
+    }
+
+    // =============================================
+    // TEXT PARALLAX + BLUR ANIMATIONS
+    // =============================================
+
+    // Text 1: Parallax fade out with blur (0-35%)
     gsap.to(heroText1, {
         scrollTrigger: {
             trigger: "#scrollytelling-hero",
-            start: "20% top",
+            start: "top top",
             end: "35% top",
+            scrub: 0.5
+        },
+        y: -150, // Parallax movement
+        ease: "none"
+    });
+    gsap.to(heroText1, {
+        scrollTrigger: {
+            trigger: "#scrollytelling-hero",
+            start: "15% top",
+            end: "30% top",
             scrub: true
         },
         opacity: 0,
-        y: -50
+        filter: "blur(10px)",
+        ease: "power2.in"
     });
 
-    // Text 2: Fade in 30-45%, fade out 55-70%
+    // Text 2: Slide in from left with blur, parallax, then fade out
     gsap.fromTo(heroText2,
-        { opacity: 0, x: -50 },
+        { opacity: 0, x: -80, filter: "blur(15px)" },
         {
             scrollTrigger: {
                 trigger: "#scrollytelling-hero",
-                start: "30% top",
-                end: "45% top",
+                start: "25% top",
+                end: "40% top",
                 scrub: true
             },
             opacity: 1,
-            x: 0
+            x: 0,
+            filter: "blur(0px)",
+            ease: "power2.out"
+        }
+    );
+    // Text 2 parallax
+    gsap.fromTo(heroText2,
+        { y: 50 },
+        {
+            scrollTrigger: {
+                trigger: "#scrollytelling-hero",
+                start: "25% top",
+                end: "70% top",
+                scrub: 0.5
+            },
+            y: -100,
+            ease: "none"
         }
     );
     gsap.to(heroText2, {
@@ -539,12 +733,14 @@ document.addEventListener("DOMContentLoaded", () => {
             scrub: true
         },
         opacity: 0,
-        x: -50
+        filter: "blur(10px)",
+        x: -50,
+        ease: "power2.in"
     });
 
-    // Text 3: Fade in 60-75%, stay visible
+    // Text 3: Slide in from right with blur, parallax, stay visible
     gsap.fromTo(heroText3,
-        { opacity: 0, x: 50 },
+        { opacity: 0, x: 80, filter: "blur(15px)" },
         {
             scrollTrigger: {
                 trigger: "#scrollytelling-hero",
@@ -553,36 +749,58 @@ document.addEventListener("DOMContentLoaded", () => {
                 scrub: true
             },
             opacity: 1,
-            x: 0
+            x: 0,
+            filter: "blur(0px)",
+            ease: "power2.out"
+        }
+    );
+    // Text 3 parallax
+    gsap.fromTo(heroText3,
+        { y: 50 },
+        {
+            scrollTrigger: {
+                trigger: "#scrollytelling-hero",
+                start: "60% top",
+                end: "100% top",
+                scrub: 0.5
+            },
+            y: -80,
+            ease: "none"
         }
     );
 
-    // Hide scroll indicator after scrolling starts
+    // Hide scroll indicator with blur
     gsap.to(scrollIndicator, {
         scrollTrigger: {
             trigger: "#scrollytelling-hero",
-            start: "5% top",
-            end: "15% top",
+            start: "3% top",
+            end: "12% top",
             scrub: true
         },
-        opacity: 0
+        opacity: 0,
+        filter: "blur(5px)",
+        y: -20
     });
 
-    // 1. Hero Title Entrance Animation
+    // =============================================
+    // HERO TITLE ENTRANCE (Enhanced with stagger)
+    // =============================================
     const tl = gsap.timeline();
     tl.from(".hero-title span", {
-        y: 100,
+        y: 120,
         opacity: 0,
-        stagger: 0.1,
-        duration: 1.2,
+        filter: "blur(20px)",
+        stagger: 0.15,
+        duration: 1.4,
         ease: "power4.out"
-    }, "0.5")
+    }, "0.3")
         .from(".hero-subtitle", {
-            y: 20,
+            y: 30,
             opacity: 0,
+            filter: "blur(10px)",
             duration: 1,
             ease: "power2.out"
-        }, "-=0.8");
+        }, "-=0.9");
 
     // 3. Parallax Elements (Shanyrak Background)
     gsap.to(".bg-shanyrak", {
