@@ -1,13 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap');
 
-/* Tailwind Directives (Assumed handled by CDN script config or build, but useful to have here for reference) */
+/* =============================================
+   DESIGN TOKENS & FLUID SYSTEM
+   ============================================= */
 :root {
+    /* Colors */
     --color-bg: #0b0d12;
+    --color-bg-alt: #050608;
     --color-text: #e2e2e2;
-    --color-accent: #d4af37; /* Kazakh Gold */
+    --color-accent: #d4af37;
     --color-accent-dim: #8a703be0;
+    --color-muted: #9ca3af;
+
+    /* Typography */
     --font-display: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
+
+    /* Fluid Spacing Scale (320px -> 1440px viewport) */
+    --space-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+    --space-sm: clamp(0.5rem, 0.4rem + 0.5vw, 1rem);
+    --space-md: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+    --space-lg: clamp(1.5rem, 1rem + 2.5vw, 3rem);
+    --space-xl: clamp(2rem, 1.5rem + 3vw, 4rem);
+    --space-2xl: clamp(3rem, 2rem + 5vw, 6rem);
+    --space-section: clamp(4rem, 3rem + 5vw, 8rem);
+
+    /* Fluid Typography Scale */
+    --text-xs: clamp(0.625rem, 0.6rem + 0.15vw, 0.75rem);
+    --text-sm: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+    --text-base: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+    --text-lg: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+    --text-xl: clamp(1.25rem, 1rem + 1vw, 1.5rem);
+    --text-2xl: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+    --text-3xl: clamp(1.875rem, 1.5rem + 2vw, 2.5rem);
+    --text-4xl: clamp(2.25rem, 1.8rem + 2.5vw, 3rem);
+    --text-5xl: clamp(3rem, 2rem + 4vw, 4rem);
+    --text-hero: clamp(2.5rem, 2rem + 4vw, 5rem);
+
+    /* Animation Durations */
+    --duration-fast: 150ms;
+    --duration-normal: 300ms;
+    --duration-slow: 500ms;
+    --duration-slower: 700ms;
+
+    /* Easing Functions */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+    /* Layout */
+    --container-max: 80rem;
+    --container-padding: var(--space-md);
 }
 
 body {
@@ -19,7 +62,12 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--font-display);
     font-weight: 600;
 }
@@ -73,4 +121,679 @@ h1, h2, h3, h4, h5, h6 {
 
 .heritage-card:hover {
     transform: translateY(-10px);
+}
+
+/* =============================================
+   PREMIUM SPLASH SCREEN STYLES
+   ============================================= */
+
+/* Hide body scroll when splash is visible */
+body.splash-active {
+    overflow: hidden;
+}
+
+/* Splash particles */
+.splash-particles {
+    background:
+        radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
+}
+
+/* Floating particles animation */
+.splash-particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #d4af37;
+    border-radius: 50%;
+    opacity: 0;
+    animation: particleFloat 3s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+        transform: translateY(0) scale(1);
+    }
+
+    90% {
+        opacity: 0.6;
+        transform: translateY(-100px) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-120px) scale(0);
+    }
+}
+
+/* Create multiple particles with different delays */
+.splash-particle:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.splash-particle:nth-child(2) {
+    left: 20%;
+    animation-delay: 0.3s;
+}
+
+.splash-particle:nth-child(3) {
+    left: 30%;
+    animation-delay: 0.6s;
+}
+
+.splash-particle:nth-child(4) {
+    left: 40%;
+    animation-delay: 0.9s;
+}
+
+.splash-particle:nth-child(5) {
+    left: 50%;
+    animation-delay: 0.2s;
+}
+
+.splash-particle:nth-child(6) {
+    left: 60%;
+    animation-delay: 0.5s;
+}
+
+.splash-particle:nth-child(7) {
+    left: 70%;
+    animation-delay: 0.8s;
+}
+
+.splash-particle:nth-child(8) {
+    left: 80%;
+    animation-delay: 0.1s;
+}
+
+.splash-particle:nth-child(9) {
+    left: 90%;
+    animation-delay: 0.4s;
+}
+
+.splash-particle:nth-child(10) {
+    left: 15%;
+    animation-delay: 0.7s;
+}
+
+.splash-particle:nth-child(11) {
+    left: 25%;
+    animation-delay: 1s;
+}
+
+.splash-particle:nth-child(12) {
+    left: 35%;
+    animation-delay: 0.15s;
+}
+
+.splash-particle:nth-child(13) {
+    left: 45%;
+    animation-delay: 0.45s;
+}
+
+.splash-particle:nth-child(14) {
+    left: 55%;
+    animation-delay: 0.75s;
+}
+
+.splash-particle:nth-child(15) {
+    left: 65%;
+    animation-delay: 0.25s;
+}
+
+.splash-particle:nth-child(16) {
+    left: 75%;
+    animation-delay: 0.55s;
+}
+
+.splash-particle:nth-child(17) {
+    left: 85%;
+    animation-delay: 0.85s;
+}
+
+.splash-particle:nth-child(18) {
+    left: 95%;
+    animation-delay: 0.35s;
+}
+
+.splash-particle:nth-child(19) {
+    left: 5%;
+    animation-delay: 0.65s;
+}
+
+.splash-particle:nth-child(20) {
+    left: 50%;
+    animation-delay: 0.95s;
+}
+
+/* Shanyrak glow effect */
+.splash-shanyrak {
+    filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.3));
+}
+
+/* Splash screen exit animation */
+#splash-screen.splash-exit {
+    animation: splashExit 1s ease-in-out forwards;
+}
+
+@keyframes splashExit {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.1);
+        pointer-events: none;
+    }
+}
+
+/* Shanyrak rotation on exit */
+#splash-screen.splash-exit .splash-shanyrak {
+    animation: shanyrakExit 1s ease-in-out forwards;
+}
+
+@keyframes shanyrakExit {
+    0% {
+        transform: rotate(0deg) scale(1);
+        filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.3));
+    }
+
+    100% {
+        transform: rotate(180deg) scale(2);
+        filter: drop-shadow(0 0 60px rgba(212, 175, 55, 0.8));
+    }
+}
+
+/* Progress bar shimmer */
+.splash-progress-bar {
+    background: linear-gradient(90deg,
+            #d4af37 0%,
+            #f4d03f 50%,
+            #d4af37 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* =============================================
+   RESPONSIVE DESIGN ENHANCEMENTS
+   ============================================= */
+
+/* Mobile Navigation Open State */
+body.mobile-nav-open {
+    overflow: hidden;
+}
+
+body.mobile-nav-open #mobile-nav {
+    pointer-events: auto;
+}
+
+body.mobile-nav-open #mobile-nav-backdrop {
+    opacity: 1;
+}
+
+body.mobile-nav-open #mobile-nav-drawer {
+    transform: translateX(0);
+}
+
+/* Hamburger Animation */
+body.mobile-nav-open #mobile-menu-btn .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+body.mobile-nav-open #mobile-menu-btn .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+body.mobile-nav-open #mobile-menu-btn .hamburger-line:nth-child(3) {
+    width: 1.5rem;
+    transform: translateY(-8px) rotate(-45deg);
+    margin-right: 0;
+}
+
+/* Mobile Nav Link Entrance Animation */
+.mobile-nav-link {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s ease;
+}
+
+body.mobile-nav-open .mobile-nav-link {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+body.mobile-nav-open .mobile-nav-link:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+body.mobile-nav-open .mobile-nav-link:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+body.mobile-nav-open .mobile-nav-link:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+body.mobile-nav-open .mobile-nav-link:nth-child(4) {
+    transition-delay: 0.25s;
+}
+
+/* =============================================
+   TEXT OVERFLOW PROTECTION
+   ============================================= */
+
+/* Global text overflow protection for long Kazakh words */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+span,
+a {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Flex children protection */
+.flex>*,
+.grid>* {
+    min-width: 0;
+}
+
+/* =============================================
+   TOUCH TARGET IMPROVEMENTS
+   ============================================= */
+
+/* Ensure minimum touch target size */
+@media (hover: none) and (pointer: coarse) {
+
+    button,
+    a,
+    [role="button"] {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* Heritage card touch feedback */
+    .heritage-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .heritage-card:active {
+        transform: scale(0.98);
+    }
+}
+
+/* =============================================
+   MOBILE-SPECIFIC ADJUSTMENTS
+   ============================================= */
+
+@media (max-width: 640px) {
+
+    /* Reduce hero scroll container on very small screens */
+    #scrollytelling-hero {
+        height: 350vh;
+    }
+
+    /* Smaller splash ornaments on mobile */
+    .splash-ornament {
+        width: 10px;
+        height: 10px;
+    }
+
+    /* Tighter section padding on mobile */
+    section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Heritage card hover disabled on mobile (uses active instead) */
+    .heritage-card:hover {
+        transform: none;
+    }
+}
+
+/* Tablet optimizations */
+@media (min-width: 641px) and (max-width: 1023px) {
+
+    /* Slightly reduced hero height for tablets */
+    #scrollytelling-hero {
+        height: 380vh;
+    }
+}
+
+/* =============================================
+   SAFE AREA INSETS (notch devices)
+   ============================================= */
+
+@supports (padding: max(0px)) {
+    body {
+        padding-left: max(0px, env(safe-area-inset-left));
+        padding-right: max(0px, env(safe-area-inset-right));
+    }
+
+    nav {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+    }
+
+    footer {
+        padding-bottom: max(3rem, env(safe-area-inset-bottom));
+    }
+}
+
+/* =============================================
+   ACCESSIBILITY: REDUCED MOTION
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    /* Keep essential UI functioning */
+    .splash-progress-bar {
+        animation: none;
+        background: var(--color-accent);
+    }
+
+    .heritage-card:hover {
+        transform: none;
+    }
+
+    /* Instant splash screen exit */
+    #splash-screen.splash-exit {
+        animation: none;
+        opacity: 0;
+    }
+}
+
+/* =============================================
+   ENHANCED FOCUS STATES (Accessibility)
+   ============================================= */
+
+/* Custom focus-visible outlines */
+:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+}
+
+/* Remove default outlines when not keyboard navigating */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Enhanced focus for interactive elements */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* Skip link (hidden until focused) */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-accent);
+    color: var(--color-bg);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    z-index: 10000;
+    transition: top var(--duration-normal) var(--ease-out-expo);
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* =============================================
+   ENHANCED TOUCH INTERACTIONS
+   ============================================= */
+
+/* Active states for touch devices */
+@media (hover: none) and (pointer: coarse) {
+
+    /* Ripple-style press feedback */
+    .heritage-card {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .heritage-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at var(--touch-x, 50%) var(--touch-y, 50%),
+                rgba(212, 175, 55, 0.15) 0%,
+                transparent 60%);
+        opacity: 0;
+        transition: opacity var(--duration-normal) ease;
+        pointer-events: none;
+    }
+
+    .heritage-card:active::after {
+        opacity: 1;
+    }
+
+    /* Improved button press states */
+    button:active,
+    a:active,
+    [role="button"]:active {
+        transform: scale(0.97);
+        opacity: 0.9;
+    }
+
+    /* Mobile nav link active feedback */
+    .mobile-nav-link:active {
+        color: var(--color-accent);
+        transform: translateX(10px);
+    }
+}
+
+/* =============================================
+   CONTAINER QUERIES (Component-Level Responsiveness)
+   ============================================= */
+
+/* Container setup for heritage cards */
+.heritage-card-container {
+    container-type: inline-size;
+    container-name: heritage-card;
+}
+
+/* Card adapts based on container width, not viewport */
+@container heritage-card (max-width: 400px) {
+    .heritage-card h3 {
+        font-size: var(--text-2xl);
+    }
+
+    .heritage-card p {
+        font-size: var(--text-sm);
+    }
+}
+
+/* =============================================
+   IMPROVED MOBILE GRID LAYOUTS
+   ============================================= */
+
+/* Stats grid optimization */
+.stats-grid {
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+}
+
+@media (max-width: 480px) {
+
+    /* Force 2-column on very small screens for stats */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Heritage cards improved grid */
+.heritage-grid {
+    display: grid;
+    gap: var(--space-lg);
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+}
+
+/* =============================================
+   IMPROVED TEXT FLOW & READABILITY
+   ============================================= */
+
+/* Better text wrapping for Kazakh */
+.text-pretty {
+    text-wrap: pretty;
+}
+
+/* Prevent orphans in paragraphs */
+p {
+    text-wrap: pretty;
+    widows: 2;
+    orphans: 2;
+}
+
+/* Hero title improved flow */
+.hero-title {
+    text-wrap: balance;
+    max-width: 95vw;
+}
+
+/* Long word handling for Kazakh */
+.break-kazakh {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+}
+
+/* =============================================
+   LANDSCAPE MOBILE OPTIMIZATIONS
+   ============================================= */
+
+@media (max-height: 500px) and (orientation: landscape) {
+
+    /* Reduce hero height in landscape */
+    #scrollytelling-hero {
+        height: 300vh;
+    }
+
+    /* Compact hero text in landscape */
+    .hero-title {
+        font-size: var(--text-3xl);
+    }
+
+    .hero-subtitle {
+        font-size: var(--text-xs);
+        letter-spacing: 0.15em;
+    }
+
+    /* Hide scroll indicator in landscape */
+    #scroll-indicator {
+        display: none;
+    }
+
+    /* Smaller nav padding */
+    nav {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+}
+
+/* =============================================
+   LARGE SCREEN ENHANCEMENTS
+   ============================================= */
+
+@media (min-width: 1440px) {
+
+    /* Max container width */
+    .container-max {
+        max-width: var(--container-max);
+        margin-inline: auto;
+    }
+
+    /* Larger hover effects on desktop */
+    .heritage-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Ultra-wide screens */
+@media (min-width: 1920px) {
+    :root {
+        font-size: 18px;
+    }
+}
+
+/* =============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================= */
+
+/* Hardware acceleration hints */
+.heritage-card,
+.splash-shanyrak,
+#scroll-canvas {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* Mobile nav drawer - use will-change only, not transform to avoid overriding Tailwind */
+#mobile-nav-drawer {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+/* Reduce paint areas on scroll */
+.noise-overlay {
+    contain: strict;
+}
+
+/* Optimize images */
+img {
+    content-visibility: auto;
 }

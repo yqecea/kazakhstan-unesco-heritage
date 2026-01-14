@@ -3,3 +3,4 @@ frames-for-hero.zip
 .gemini/
 node_modules/
 .DS_Store
+.vercel

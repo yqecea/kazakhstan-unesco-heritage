@@ -45,6 +45,77 @@
 
 <body class="bg-brand-dark text-brand-gray antialiased selection:bg-brand-gold selection:text-brand-dark">
 
+    <!-- ======================= PREMIUM SPLASH SCREEN ======================= -->
+    <div id="splash-screen"
+        class="fixed inset-0 z-[9999] bg-brand-dark flex items-center justify-center overflow-hidden">
+        <!-- Animated Particle Field -->
+        <div class="splash-particles absolute inset-0">
+            <!-- Particles will be generated via JS, but CSS provides fallback animation -->
+        </div>
+
+        <!-- Central Shanyrak Animation -->
+        <div class="splash-content relative z-10 text-center">
+            <!-- Animated SVG Shanyrak -->
+            <svg class="splash-shanyrak w-32 h-32 md:w-48 md:h-48 mx-auto mb-8" viewBox="0 0 100 100" fill="none">
+                <!-- Outer ring - draws in -->
+                <circle class="splash-ring splash-ring-1" cx="50" cy="50" r="45" stroke="#d4af37" stroke-width="0.5"
+                    stroke-dasharray="283" stroke-dashoffset="283" />
+                <!-- Middle ring -->
+                <circle class="splash-ring splash-ring-2" cx="50" cy="50" r="32" stroke="#d4af37" stroke-width="0.5"
+                    stroke-dasharray="201" stroke-dashoffset="201" />
+                <!-- Inner ring -->
+                <circle class="splash-ring splash-ring-3" cx="50" cy="50" r="18" stroke="#d4af37" stroke-width="0.5"
+                    stroke-dasharray="113" stroke-dashoffset="113" />
+                <!-- Center dot -->
+                <circle class="splash-center" cx="50" cy="50" r="4" fill="#d4af37" opacity="0" />
+                <!-- Cross beams -->
+                <g class="splash-beams" opacity="0">
+                    <line x1="50" y1="5" x2="50" y2="95" stroke="#d4af37" stroke-width="0.3" />
+                    <line x1="5" y1="50" x2="95" y2="50" stroke="#d4af37" stroke-width="0.3" />
+                    <line x1="15" y1="15" x2="85" y2="85" stroke="#d4af37" stroke-width="0.3" opacity="0.5" />
+                    <line x1="85" y1="15" x2="15" y2="85" stroke="#d4af37" stroke-width="0.3" opacity="0.5" />
+                </g>
+            </svg>
+
+            <!-- Text reveal -->
+            <div class="splash-text overflow-hidden">
+                <p
+                    class="splash-title text-brand-gold text-xs md:text-sm tracking-[0.4em] uppercase font-medium opacity-0 translate-y-full">
+                    ЮНЕСКО Мұрасы
+                </p>
+            </div>
+
+            <!-- Loading progress -->
+            <div class="splash-progress mt-8 w-32 md:w-48 mx-auto">
+                <div class="h-px bg-brand-gold/20 relative overflow-hidden">
+                    <div class="splash-progress-bar absolute inset-y-0 left-0 w-0 bg-brand-gold"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative corner ornaments -->
+        <div class="splash-ornament absolute top-8 left-8 w-16 h-16 opacity-0">
+            <svg viewBox="0 0 50 50" class="w-full h-full text-brand-gold/30">
+                <path d="M0 0 L50 0 L50 10 L10 10 L10 50 L0 50 Z" fill="currentColor" />
+            </svg>
+        </div>
+        <div class="splash-ornament absolute top-8 right-8 w-16 h-16 opacity-0 rotate-90">
+            <svg viewBox="0 0 50 50" class="w-full h-full text-brand-gold/30">
+                <path d="M0 0 L50 0 L50 10 L10 10 L10 50 L0 50 Z" fill="currentColor" />
+            </svg>
+        </div>
+        <div class="splash-ornament absolute bottom-8 left-8 w-16 h-16 opacity-0 -rotate-90">
+            <svg viewBox="0 0 50 50" class="w-full h-full text-brand-gold/30">
+                <path d="M0 0 L50 0 L50 10 L10 10 L10 50 L0 50 Z" fill="currentColor" />
+            </svg>
+        </div>
+        <div class="splash-ornament absolute bottom-8 right-8 w-16 h-16 opacity-0 rotate-180">
+            <svg viewBox="0 0 50 50" class="w-full h-full text-brand-gold/30">
+                <path d="M0 0 L50 0 L50 10 L10 10 L10 50 L0 50 Z" fill="currentColor" />
+            </svg>
+        </div>
+    </div>
+
     <!-- Atmosphere -->
     <div class="noise-overlay"></div>
 
@@ -61,590 +132,671 @@
         </svg>
     </div>
 
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Негізгі мазмұнға өту</a>
+
     <!-- Navigation -->
-    <nav
-        class="fixed top-0 left-0 w-full z-50 px-6 md:px-12 py-6 flex justify-between items-center mix-blend-difference">
-        <div class="text-brand-gold font-display font-bold text-xl tracking-widest uppercase">UNESCO KZ</div>
+    <nav class="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 md:px-12 py-4 md:py-6 flex justify-between items-center mix-blend-difference"
+        role="navigation" aria-label="Негізгі навигация">
+        <div class="text-brand-gold font-display font-bold text-lg md:text-xl tracking-widest uppercase">UNESCO KZ</div>
         <div class="hidden md:flex gap-8 text-xs font-body tracking-wider opacity-70">
-            <a href="#intro" class="hover:opacity-100 transition-opacity">КІРІСПЕ</a>
-            <a href="#heritage" class="hover:opacity-100 transition-opacity">МҰРА</a>
-            <a href="#program" class="hover:opacity-100 transition-opacity">БАҒДАРЛАМА</a>
-            <a href="#future" class="hover:opacity-100 transition-opacity">БОЛАШАҚ</a>
+            <a href="#intro" class="hover:opacity-100 transition-opacity py-2">КІРІСПЕ</a>
+            <a href="#heritage" class="hover:opacity-100 transition-opacity py-2">МҰРА</a>
+            <a href="#program" class="hover:opacity-100 transition-opacity py-2">БАҒДАРЛАМА</a>
+            <a href="#future" class="hover:opacity-100 transition-opacity py-2">БОЛАШАҚ</a>
         </div>
-        <div class="text-xs font-body tracking-wider opacity-70">EST. 1992</div>
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden w-11 h-11 flex flex-col items-center justify-center gap-1.5 -mr-2"
+            aria-label="Мәзірді ашу/жабу" aria-expanded="false" aria-controls="mobile-nav-drawer">
+            <span class="hamburger-line w-6 h-0.5 bg-brand-gold transition-all duration-300"></span>
+            <span class="hamburger-line w-6 h-0.5 bg-brand-gold transition-all duration-300"></span>
+            <span class="hamburger-line w-4 h-0.5 bg-brand-gold transition-all duration-300 self-end mr-1"></span>
+        </button>
+        <div class="hidden md:block text-xs font-body tracking-wider opacity-70">EST. 1992</div>
     </nav>
 
-    <!-- ======================= SCROLLYTELLING HERO SECTION ======================= -->
-    <!-- Container height controls scroll duration (400vh = 4x viewport = ~4 seconds of animation) -->
-    <div id="scrollytelling-hero" class="relative z-10" style="height: 400vh;">
-
-        <!-- Sticky Canvas Container -->
-        <div class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
-
-            <!-- Loading State -->
-            <div id="scroll-loader" class="absolute inset-0 flex items-center justify-center bg-brand-dark z-50">
-                <div class="text-center">
-                    <div
-                        class="w-16 h-16 border-2 border-brand-gold/20 border-t-brand-gold rounded-full animate-spin mx-auto mb-4">
-                    </div>
-                    <p class="text-brand-gold/60 text-sm tracking-widest uppercase">Жүктелуде...</p>
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav" class="fixed inset-0 z-[100] pointer-events-none" aria-hidden="true">
+        <!-- Backdrop -->
+        <div id="mobile-nav-backdrop"
+            class="absolute inset-0 bg-brand-dark/90 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+        <!-- Drawer -->
+        <div id="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Навигация мәзірі"
+            class="absolute top-0 right-0 h-full w-[280px] max-w-[85vw] bg-brand-darker border-l border-brand-gold/10 translate-x-full transition-transform duration-300 ease-out">
+            <div class="flex flex-col h-full p-6">
+                <!-- Close Button -->
+                <button id="mobile-nav-close" class="self-end w-11 h-11 flex items-center justify-center -mr-2 -mt-1"
+                    aria-label="Мәзірді жабу">
+                    <svg class="w-6 h-6 text-brand-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <!-- Nav Links -->
+                <nav class="flex flex-col gap-6 mt-12" aria-label="Мобильді навигация">
+                    <a href="#intro"
+                        class="mobile-nav-link text-2xl font-display text-brand-gray hover:text-brand-gold transition-colors py-2">Кіріспе</a>
+                    <a href="#heritage"
+                        class="mobile-nav-link text-2xl font-display text-brand-gray hover:text-brand-gold transition-colors py-2">Мұра</a>
+                    <a href="#program"
+                        class="mobile-nav-link text-2xl font-display text-brand-gray hover:text-brand-gold transition-colors py-2">Бағдарлама</a>
+                    <a href="#future"
+                        class="mobile-nav-link text-2xl font-display text-brand-gray hover:text-brand-gold transition-colors py-2">Болашақ</a>
+                </nav>
+                <!-- Footer -->
+                <div class="mt-auto pt-8 border-t border-brand-gold/10">
+                    <p class="text-xs text-brand-muted tracking-widest">EST. 1992</p>
+                    <p class="text-xs text-brand-gold/60 mt-2">ЮНЕСКО Мұрасы</p>
                 </div>
-            </div>
-
-            <!-- The Canvas -->
-            <canvas id="scroll-canvas" class="absolute inset-0 w-full h-full"></canvas>
-
-            <!-- Vignette Overlay -->
-            <div
-                class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(11,13,18,0.3)_50%,rgba(11,13,18,0.9)_100%)] pointer-events-none z-10">
-            </div>
-
-            <!-- Bottom Gradient Fade -->
-            <div
-                class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-brand-dark pointer-events-none z-10">
-            </div>
-
-            <!-- Top Gradient for Nav -->
-            <div
-                class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-brand-dark/70 to-transparent pointer-events-none z-10">
-            </div>
-
-            <!-- Text Overlay: Title (0-30% scroll) -->
-            <div id="hero-text-1"
-                class="absolute inset-0 flex flex-col items-center justify-center text-center z-20 px-4">
-                <h2
-                    class="hero-subtitle text-brand-gold uppercase tracking-[0.3em] text-xs md:text-sm mb-6 font-medium drop-shadow-lg">
-                    Мәдени код • Тарих • Болашақ
-                </h2>
-                <h1
-                    class="hero-title font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-light leading-[0.95] text-balance max-w-6xl drop-shadow-2xl">
-                    <span class="block">Қазақстанның</span>
-                    <span class="block text-brand-gold italic my-2 md:my-4">ЮНЕСКО-дағы</span>
-                    <span class="block">Мәдени Мұрасы</span>
-                </h1>
-            </div>
-
-            <!-- Text Overlay: Mid-scroll (30-60% scroll) -->
-            <div id="hero-text-2" class="absolute inset-0 flex items-center z-20 px-6 md:px-16 opacity-0">
-                <div class="max-w-md">
-                    <p class="text-brand-gold uppercase tracking-widest text-xs mb-4">Ұлы дала</p>
-                    <h2 class="font-display text-3xl md:text-5xl mb-4">Рухани қазына</h2>
-                    <p class="text-white/60 text-sm md:text-base leading-relaxed">Мыңжылдық даналықтың сыры ашылуда...
-                    </p>
-                </div>
-            </div>
-
-            <!-- Text Overlay: End (60-100% scroll) -->
-            <div id="hero-text-3" class="absolute inset-0 flex items-center justify-end z-20 px-6 md:px-16 opacity-0">
-                <div class="max-w-md text-right">
-                    <p class="text-brand-gold uppercase tracking-widest text-xs mb-4">1992 жылдан</p>
-                    <h2 class="font-display text-3xl md:text-5xl mb-4">Мәңгілік мұра</h2>
-                    <p class="text-white/60 text-sm md:text-base leading-relaxed">Адамзат өркениетіне қосқан үлесіміз
-                    </p>
-                </div>
-            </div>
-
-            <!-- Scroll Indicator -->
-            <div id="scroll-indicator"
-                class="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 animate-bounce opacity-60">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M12 5v14M19 12l-7 7-7-7" />
-                </svg>
             </div>
         </div>
     </div>
 
-    <!-- ======================= INTRODUCTION SECTION ======================= -->
-    <section id="intro" class="relative z-10 py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            <div class="lg:col-span-4">
-                <span
-                    class="section-title text-brand-gold text-lg md:text-xl font-display italic block mb-4">Кіріспе</span>
-                <p class="text-xs uppercase tracking-widest opacity-40">1992 — Бүгінгі күн</p>
-            </div>
-            <div class="lg:col-span-8">
-                <p class="text-xl md:text-2xl lg:text-3xl font-light leading-relaxed mb-8">
-                    Қазақстан Республикасы <span class="text-brand-gold font-medium">1992 жылдан</span> бастап
-                    ЮНЕСКО-ның толыққанды мүшесі болып табылады. Бүгінгі таңда біздің мәдени мұрамыз екі негізгі бағыт
-                    бойынша әлемдік деңгейде қорғалуда.
-                </p>
+    <!-- ======================= MAIN CONTENT ======================= -->
+    <main id="main-content">
+        <!-- Container height controls scroll duration (400vh = 4x viewport = ~4 seconds of animation) -->
+        <div id="scrollytelling-hero" class="relative z-10" style="height: 400vh;">
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-brand-gold/20 pt-8">
-                    <div class="group">
+            <!-- Sticky Canvas Container -->
+            <div class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+
+                <!-- Loading State -->
+                <div id="scroll-loader" class="absolute inset-0 flex items-center justify-center bg-brand-dark z-50">
+                    <div class="text-center">
                         <div
-                            class="text-4xl md:text-5xl font-display text-brand-gold mb-3 group-hover:scale-105 transition-transform origin-left">
-                            01</div>
-                        <h3 class="text-lg md:text-xl font-display mb-3">Дүниежүзілік мұра тізімі</h3>
-                        <p class="text-sm opacity-60 leading-relaxed">World Heritage List – материалдық нысандар:
-                            кесенелер, табиғи қорықтар, археологиялық ескерткіштер және сәулет мұралары.</p>
-                    </div>
-                    <div class="group">
-                        <div
-                            class="text-4xl md:text-5xl font-display text-brand-gold mb-3 group-hover:scale-105 transition-transform origin-left">
-                            02</div>
-                        <h3 class="text-lg md:text-xl font-display mb-3">Материалдық емес мұра</h3>
-                        <p class="text-sm opacity-60 leading-relaxed">Intangible Cultural Heritage – рухани құндылықтар:
-                            салт-дәстүрлер, өнер түрлері, ұлттық ойындар, білім мен дағдылар.</p>
+                            class="w-16 h-16 border-2 border-brand-gold/20 border-t-brand-gold rounded-full animate-spin mx-auto mb-4">
+                        </div>
+                        <p class="text-brand-gold/60 text-sm tracking-widest uppercase">Жүктелуде...</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- ======================= INTANGIBLE HERITAGE SHOWCASE ======================= -->
-    <section id="heritage" class="relative z-10 py-16 md:py-24 bg-brand-darker">
-        <div class="max-w-7xl mx-auto px-6 md:px-12">
-            <div class="text-center mb-16 md:mb-24">
-                <span class="text-brand-gold uppercase tracking-widest text-xs mb-4 block">Материалдық емес мәдени
-                    мұра</span>
-                <h2 class="section-title text-4xl md:text-5xl lg:text-7xl font-display">Асыл Мұра</h2>
-                <p class="mt-6 text-sm md:text-base opacity-50 max-w-2xl mx-auto">Презентациямыздың негізгі "өзәгі"
-                    болатын үш ұлттық қазына — Наурыз, Киіз үй және Асық ату.</p>
-            </div>
+                <!-- The Canvas -->
+                <canvas id="scroll-canvas" class="absolute inset-0 w-full h-full"></canvas>
 
-            <!-- ========= 1. NAURYZ ========= -->
-            <article class="heritage-card group mb-24 md:mb-32">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-                    <div
-                        class="order-2 lg:order-1 relative aspect-square lg:aspect-[4/5] w-full overflow-hidden rounded-2xl">
-                        <img src="images/nauryz.png" alt="Наурыз мейрамы - қазақтың көктемгі мерекесі"
-                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            loading="lazy">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent">
-                        </div>
-                        <div class="absolute bottom-6 left-6 right-6">
-                            <span
-                                class="inline-block px-3 py-1 bg-brand-gold/20 backdrop-blur-sm text-brand-gold text-xs rounded-full">12
-                                елмен бірлескен номинация</span>
-                        </div>
-                    </div>
-                    <div class="order-1 lg:order-2 py-4">
-                        <div class="flex items-center gap-4 mb-6">
-                            <span class="text-brand-gold text-xs tracking-widest font-mono">2016</span>
-                            <span class="w-12 h-px bg-brand-gold/30"></span>
-                            <span class="text-xs opacity-40">ЮНЕСКО</span>
-                        </div>
-                        <h3 class="text-3xl md:text-4xl lg:text-5xl font-display mb-6 leading-tight">Наурыз Мейрамы</h3>
-                        <p class="text-base md:text-lg opacity-70 mb-6 leading-relaxed">
-                            Ресми атауы: <em class="text-brand-gold">Наурыз: жаңару мейрамы</em>. Бұл жай ғана «жаңа
-                            жыл» емес, бұл — <strong>ғарыштық циклдің жаңаруы</strong>. Зерттеушілер Наурызды "синкретті
-                            мейрам" деп атайды, өйткені ол зороастризм, тәңіршілдік және ислам мәдениетінің элементтерін
-                            біріктірген.
+                <!-- Vignette Overlay -->
+                <div
+                    class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(11,13,18,0.3)_50%,rgba(11,13,18,0.9)_100%)] pointer-events-none z-10">
+                </div>
+
+                <!-- Bottom Gradient Fade -->
+                <div
+                    class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-brand-dark pointer-events-none z-10">
+                </div>
+
+                <!-- Top Gradient for Nav -->
+                <div
+                    class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-brand-dark/70 to-transparent pointer-events-none z-10">
+                </div>
+
+                <!-- Text Overlay: Title (0-30% scroll) -->
+                <div id="hero-text-1"
+                    class="absolute inset-0 flex flex-col items-center justify-center text-center z-20 px-4 sm:px-6">
+                    <h2
+                        class="hero-subtitle text-brand-gold uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[10px] sm:text-xs md:text-sm mb-4 sm:mb-6 font-medium drop-shadow-lg">
+                        Мәдени код • Тарих • Болашақ
+                    </h2>
+                    <h1
+                        class="hero-title font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-light leading-[1] sm:leading-[0.95] text-balance max-w-6xl drop-shadow-2xl break-words">
+                        <span class="block">Қазақстанның</span>
+                        <span class="block text-brand-gold italic my-1 sm:my-2 md:my-4">ЮНЕСКО-дағы</span>
+                        <span class="block">Мәдени Мұрасы</span>
+                    </h1>
+                </div>
+
+                <!-- Text Overlay: Mid-scroll (30-60% scroll) -->
+                <div id="hero-text-2" class="absolute inset-0 flex items-center z-20 px-4 sm:px-6 md:px-16 opacity-0">
+                    <div class="max-w-sm sm:max-w-md">
+                        <p class="text-brand-gold uppercase tracking-widest text-[10px] sm:text-xs mb-2 sm:mb-4">Ұлы
+                            дала
                         </p>
-
-                        <div class="space-y-4 mb-8">
-                            <div class="flex items-start gap-4">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-brand-gold/10 flex items-center justify-center flex-shrink-0 mt-1">
-                                    <svg class="w-4 h-4 text-brand-gold" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-sm mb-1">Әлеуметтік функция</h4>
-                                    <p class="text-sm opacity-50">Ренжіскендерді татуластыру, «Самарқанның көк тасы
-                                        еруі» метафорасы арқылы қоғамдық келісімді нығайту.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-brand-gold/10 flex items-center justify-center flex-shrink-0 mt-1">
-                                    <svg class="w-4 h-4 text-brand-gold" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-sm mb-1">Экологиялық аспект</h4>
-                                    <p class="text-sm opacity-50">«Бұлақ көрсең – көзін аш» дәстүрі арқылы табиғат пен
-                                        адам арасындағы гармонияны насихаттау.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-wrap gap-2">
-                            <span
-                                class="px-3 py-1 border border-brand-gold/20 text-xs rounded-full opacity-60">Трансшекаралық</span>
-                            <span
-                                class="px-3 py-1 border border-brand-gold/20 text-xs rounded-full opacity-60">Иран</span>
-                            <span
-                                class="px-3 py-1 border border-brand-gold/20 text-xs rounded-full opacity-60">Түркия</span>
-                            <span
-                                class="px-3 py-1 border border-brand-gold/20 text-xs rounded-full opacity-60">Әзербайжан</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- ========= 2. YURT ========= -->
-            <article class="heritage-card group mb-24 md:mb-32">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-                    <div class="py-4">
-                        <div class="flex items-center gap-4 mb-6">
-                            <span class="text-brand-gold text-xs tracking-widest font-mono">2014</span>
-                            <span class="w-12 h-px bg-brand-gold/30"></span>
-                            <span class="text-xs opacity-40">ЮНЕСКО</span>
-                        </div>
-                        <h3 class="text-3xl md:text-4xl lg:text-5xl font-display mb-6 leading-tight">Киіз Үй</h3>
-                        <p class="text-base md:text-lg opacity-70 mb-6 leading-relaxed">
-                            Ресми атауы: <em class="text-brand-gold">Қазақ және қырғыз киіз үйлерін дайындау
-                                шеберлігі</em>. Киіз үй – көшпенділердің <strong>инженерлік ойының шыңы</strong>,
-                            табиғатпен үйлесімділік пен практикалық даналықтың символы.
+                        <h2 class="font-display text-2xl sm:text-3xl md:text-5xl mb-2 sm:mb-4">Рухани қазына</h2>
+                        <p class="text-white/60 text-xs sm:text-sm md:text-base leading-relaxed">Мыңжылдық даналықтың
+                            сыры
+                            ашылуда...
                         </p>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                            <div class="p-4 bg-white/5 rounded-lg border border-white/5">
-                                <div class="text-brand-gold font-display text-2xl mb-2">Шаңырақ</div>
-                                <p class="text-xs opacity-50">Күн мен аспанның символы</p>
-                            </div>
-                            <div class="p-4 bg-white/5 rounded-lg border border-white/5">
-                                <div class="text-brand-gold font-display text-2xl mb-2">Кереге</div>
-                                <p class="text-xs opacity-50">Әлемнің шекарасы</p>
-                            </div>
-                            <div class="p-4 bg-white/5 rounded-lg border border-white/5">
-                                <div class="text-brand-gold font-display text-2xl mb-2">Босаға</div>
-                                <p class="text-xs opacity-50">Екі әлемнің түйісу нүктесі</p>
-                            </div>
-                        </div>
-
-                        <ul class="space-y-2 text-sm opacity-60">
-                            <li class="flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span>
-                                Шегесіз құрастырылатын конструкция
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span>
-                                Аэродинамикалық пішін — дауылға төзімді
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span>
-                                Сейсмикалық қауіпсіз баспана
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="relative aspect-square lg:aspect-[4/5] w-full overflow-hidden rounded-2xl">
-                        <img src="images/yurt.png" alt="Қазақ киіз үйі - көшпенділердің инженерлік шедеврі"
-                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            loading="lazy">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent">
-                        </div>
                     </div>
                 </div>
-            </article>
 
-            <!-- ========= 3. ASYK ========= -->
-            <article class="heritage-card group mb-24 md:mb-32">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-                    <div
-                        class="order-2 lg:order-1 relative aspect-square lg:aspect-[4/5] w-full overflow-hidden rounded-2xl">
-                        <img src="images/asyk.png" alt="Асық ату - қазақтың ұлттық ойыны"
-                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            loading="lazy">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent">
-                        </div>
-                    </div>
-                    <div class="order-1 lg:order-2 py-4">
-                        <div class="flex items-center gap-4 mb-6">
-                            <span class="text-brand-gold text-xs tracking-widest font-mono">2017</span>
-                            <span class="w-12 h-px bg-brand-gold/30"></span>
-                            <span class="text-xs opacity-40">ЮНЕСКО</span>
-                        </div>
-                        <h3 class="text-3xl md:text-4xl lg:text-5xl font-display mb-6 leading-tight">Асық Ату</h3>
-                        <p class="text-base md:text-lg opacity-70 mb-6 leading-relaxed">
-                            Асық ату – жай ғана балалар ермегі емес, ол – <strong>бастапқы әскери-стратегиялық дайындық
-                                жүйесі</strong>. Ойын барысында көз өлшеу, траекторияны есептеу және қол моторикасы
-                            дамиды.
+                <!-- Text Overlay: End (60-100% scroll) -->
+                <div id="hero-text-3"
+                    class="absolute inset-0 flex items-center justify-center sm:justify-end z-20 px-4 sm:px-6 md:px-16 opacity-0">
+                    <div class="max-w-sm sm:max-w-md text-center sm:text-right">
+                        <p class="text-brand-gold uppercase tracking-widest text-[10px] sm:text-xs mb-2 sm:mb-4">1992
+                            жылдан
                         </p>
-
-                        <div class="space-y-4 mb-8">
-                            <div class="flex items-start gap-4">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-brand-gold/10 flex items-center justify-center flex-shrink-0 mt-1">
-                                    <svg class="w-4 h-4 text-brand-gold" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-sm mb-1">Мергендік пен физика</h4>
-                                    <p class="text-sm opacity-50">Ойын барысында көз өлшеу, траекторияны есептеу және
-                                        қол моторикасы дамиды.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-brand-gold/10 flex items-center justify-center flex-shrink-0 mt-1">
-                                    <svg class="w-4 h-4 text-brand-gold" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-sm mb-1">Әлеуметтену</h4>
-                                    <p class="text-sm opacity-50">«Хан талапай», «Үш табан» сияқты түрлері балаларды
-                                        командалық жұмысқа және бәсекелестікке баулиды.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-brand-gold/10 flex items-center justify-center flex-shrink-0 mt-1">
-                                    <svg class="w-4 h-4 text-brand-gold" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-sm mb-1">Символизм</h4>
-                                    <p class="text-sm opacity-50">Асық – береке мен байлықтың символы. «Алтын сақа» — ең
-                                        құнды асық, жеңісшінің белгісі.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        </div>
-    </section>
-
-    <!-- ======================= RECENT ADDITIONS (2022+) ======================= -->
-    <section class="relative z-10 py-16 md:py-24 border-t border-brand-gold/10">
-        <div class="max-w-7xl mx-auto px-6 md:px-12">
-            <div class="text-center mb-16">
-                <span class="text-brand-gold uppercase tracking-widest text-xs mb-4 block">Соңғы қосылғандар</span>
-                <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-display">Жаңа Номинациялар</h2>
-                <p class="mt-4 text-sm opacity-50 max-w-xl mx-auto">2022 жылдан бері ЮНЕСКО тізіміне қосылған қазақтың
-                    мәдени қазыналары.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Orteke -->
-                <div class="heritage-card group relative overflow-hidden rounded-2xl aspect-[4/3]">
-                    <img src="images/orteke.png" alt="Ортеке - қазақтың дәстүрлі қуыршағы"
-                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        loading="lazy">
-                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/50 to-transparent">
-                    </div>
-                    <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                        <span class="text-brand-gold text-xs tracking-widest font-mono">2022</span>
-                        <h3 class="text-2xl md:text-3xl font-display mt-2 mb-2">Ортеке</h3>
-                        <p class="text-sm opacity-60 max-w-sm">Дәстүрлі қуыршақ-жануар. Музыка мен қолөнердің тамаша
-                            синтезі — домбыра ырғағына билейтін тау ешкісі.</p>
+                        <h2 class="font-display text-2xl sm:text-3xl md:text-5xl mb-2 sm:mb-4">Мәңгілік мұра</h2>
+                        <p class="text-white/60 text-xs sm:text-sm md:text-base leading-relaxed">Адамзат өркениетіне
+                            қосқан
+                            үлесіміз
+                        </p>
                     </div>
                 </div>
 
-                <!-- Eagle Hunting -->
-                <div class="heritage-card group relative overflow-hidden rounded-2xl aspect-[4/3]">
-                    <img src="images/eagle-hunting.png" alt="Бүркітшілік - қазақтың аңшылық өнері"
-                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        loading="lazy">
-                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/50 to-transparent">
-                    </div>
-                    <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                        <span class="text-brand-gold text-xs tracking-widest font-mono">ЮНЕСКО</span>
-                        <h3 class="text-2xl md:text-3xl font-display mt-2 mb-2">Бүркітшілік</h3>
-                        <p class="text-sm opacity-60 max-w-sm">Бүркітпен аңшылық өнері. Адам мен жыртқыш құстың
-                            мыңжылдық достығы. Алтай тауларының мұрасы.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ======================= WORLD HERITAGE SITES ======================= -->
-    <section class="relative z-10 py-16 md:py-24 bg-brand-darker">
-        <div class="max-w-7xl mx-auto px-6 md:px-12">
-            <div class="text-center mb-16">
-                <span class="text-brand-gold uppercase tracking-widest text-xs mb-4 block">Дүниежүзілік мұра
-                    тізімі</span>
-                <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-display">Материалдық Мұра</h2>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                <div class="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
-                    <img src="images/yasawi.png" alt="Қожа Ахмет Ясауи кесенесі - ЮНЕСКО мұрасы"
-                        class="absolute inset-0 w-full h-full object-cover" loading="lazy">
-                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent">
-                    </div>
-                    <div class="absolute bottom-6 left-6 right-6">
-                        <span
-                            class="inline-block px-3 py-1 bg-brand-gold text-brand-dark text-xs rounded-full font-medium">2003
-                            жылдан ЮНЕСКО тізімінде</span>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-2xl md:text-3xl font-display mb-4">Қожа Ахмет Ясауи Кесенесі</h3>
-                    <p class="text-base opacity-70 mb-6 leading-relaxed">
-                        Түркістан қаласындағы ұлы сопы Қожа Ахмет Ясауидің мазары. Әмір Темірдің бұйрығымен XIV ғасырда
-                        салынған бұл ғимарат — орта азиялық сәулет өнерінің шедеврі.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="p-4 bg-white/5 rounded-lg">
-                            <div class="text-2xl font-display text-brand-gold">XIV</div>
-                            <p class="text-xs opacity-50">Ғасыр</p>
-                        </div>
-                        <div class="p-4 bg-white/5 rounded-lg">
-                            <div class="text-2xl font-display text-brand-gold">2 тонна</div>
-                            <p class="text-xs opacity-50">Тайқазан салмағы</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Archaeological Heritage -->
-            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div
-                    class="heritage-card p-6 bg-white/5 rounded-xl border border-white/5 hover:border-brand-gold/20 transition-colors">
-                    <div class="aspect-square mb-4 overflow-hidden rounded-lg">
-                        <img src="images/golden-warrior.png" alt="Алтын адам - сақ жауынгері"
-                            class="w-full h-full object-cover" loading="lazy">
-                    </div>
-                    <h4 class="font-display text-xl mb-2">Алтын Адам</h4>
-                    <p class="text-sm opacity-50">Есік қорғанынан табылған сақ дәуірінің алтын киімді жауынгері.
-                        Қазақстанның ұлттық символы.</p>
-                </div>
-                <div
-                    class="heritage-card p-6 bg-white/5 rounded-xl border border-white/5 hover:border-brand-gold/20 transition-colors">
-                    <div class="aspect-square mb-4 overflow-hidden rounded-lg">
-                        <img src="images/silk-road.png" alt="Ұлы Жібек Жолы - керуен"
-                            class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                            loading="lazy">
-                    </div>
-                    <h4 class="font-display text-xl mb-2">Жібек Жолы</h4>
-                    <p class="text-sm opacity-50">Талғар, Қаялық, Ақыртас — Ұлы Жібек жолындағы археологиялық нысандар
-                        ЮНЕСКО тізімінде.</p>
-                </div>
-                <div
-                    class="heritage-card p-6 bg-white/5 rounded-xl border border-white/5 hover:border-brand-gold/20 transition-colors">
-                    <div class="aspect-square mb-4 overflow-hidden rounded-lg">
-                        <img src="images/botai.png" alt="Ботай қонысы - жылқыны қолға үйрету"
-                            class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                            loading="lazy">
-                    </div>
-                    <h4 class="font-display text-xl mb-2">Ботай Қонысы</h4>
-                    <p class="text-sm opacity-50">Жылқыны алғаш қолға үйреткен орын. Адамзат тарихындағы маңызды
-                        жаңалық.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ======================= STATISTICS (Cultural Heritage Program) ======================= -->
-    <section id="program" class="relative z-10 py-24 md:py-32 border-t border-brand-gold/10">
-        <div class="max-w-7xl mx-auto px-6 md:px-12">
-            <div class="text-center mb-16 md:mb-20">
-                <span class="text-brand-gold uppercase tracking-widest text-xs mb-4 block">2004–2011</span>
-                <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-display">«Мәдени Мұра» Бағдарламасы</h2>
-                <p class="mt-4 text-sm md:text-base opacity-50 max-w-2xl mx-auto">
-                    Бұл бағдарлама Қазақстанның ЮНЕСКО-дағы қазіргі жетістіктерінің іргетасы болды. Стратегиялық мақсаты
-                    — тарихи-мәдени ескерткіштерді түгендеу және қалпына келтіру.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 text-center">
-                <div
-                    class="p-6 md:p-8 border border-white/5 bg-white/5 rounded-xl hover:border-brand-gold/30 transition-colors group">
-                    <div class="text-4xl md:text-5xl lg:text-6xl font-display text-brand-gold mb-2 stat-value group-hover:scale-110 transition-transform"
-                        data-value="78">78</div>
-                    <div class="text-xs md:text-sm uppercase tracking-wide opacity-70">Ескерткіш<br>қалпына келтірілді
-                    </div>
-                </div>
-                <div
-                    class="p-6 md:p-8 border border-white/5 bg-white/5 rounded-xl hover:border-brand-gold/30 transition-colors group">
-                    <div class="text-4xl md:text-5xl lg:text-6xl font-display text-brand-gold mb-2 stat-value group-hover:scale-110 transition-transform"
-                        data-value="26">26</div>
-                    <div class="text-xs md:text-sm uppercase tracking-wide opacity-70">Ғылыми<br>Экспедиция</div>
-                </div>
-                <div
-                    class="p-6 md:p-8 border border-white/5 bg-white/5 rounded-xl hover:border-brand-gold/30 transition-colors group">
-                    <div class="text-4xl md:text-5xl lg:text-6xl font-display text-brand-gold mb-2 stat-value group-hover:scale-110 transition-transform"
-                        data-value="100">100</div>
-                    <div class="text-xs md:text-sm uppercase tracking-wide opacity-70">Томдық<br>«Бабалар сөзі»</div>
-                </div>
-                <div
-                    class="p-6 md:p-8 border border-white/5 bg-white/5 rounded-xl hover:border-brand-gold/30 transition-colors group">
-                    <div class="text-4xl md:text-5xl lg:text-6xl font-display text-brand-gold mb-2 stat-value group-hover:scale-110 transition-transform"
-                        data-value="5000">5000</div>
-                    <div class="text-xs md:text-sm uppercase tracking-wide opacity-70">Тарихи<br>Қолжазба</div>
-                </div>
-            </div>
-
-            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="p-6 border-l-2 border-brand-gold/30">
-                    <h4 class="font-display text-lg mb-2">Реставрация</h4>
-                    <p class="text-sm opacity-50">78 тарихи ескерткіш қалпына келтірілді, оның ішінде 28-і толық
-                        жаңғыртылды. Қожа Ахмет Ясауи, Арыстанбаб, Отырар қалашығы.</p>
-                </div>
-                <div class="p-6 border-l-2 border-brand-gold/30">
-                    <h4 class="font-display text-lg mb-2">Археология</h4>
-                    <p class="text-sm opacity-50">Шілікті, Берел қорғандарындағы "Алтын адам" олжалары зерттелді. Ботай
-                        қонысы — жылқыны қолға үйрету орталығы ашылды.</p>
-                </div>
-                <div class="p-6 border-l-2 border-brand-gold/30">
-                    <h4 class="font-display text-lg mb-2">Мұрағаттар</h4>
-                    <p class="text-sm opacity-50">Қытай, Түркия, Еуропа мұрағаттарынан Қазақстан тарихына қатысты
-                        5000-ға жуық құнды құжаттар әкелінді.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ======================= FUTURE / PERSPECTIVE ======================= -->
-    <section id="future" class="relative z-10 py-24 md:py-32 bg-gradient-to-b from-brand-darker to-brand-dark">
-        <div class="max-w-4xl mx-auto px-6 md:px-12 text-center">
-            <span class="text-brand-gold uppercase tracking-widest text-xs mb-4 block">Перспектива</span>
-            <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-display mb-8">2025–2026</h2>
-            <p class="text-lg md:text-xl opacity-70 leading-relaxed mb-12">
-                Қазіргі таңда Қазақстанның ЮНЕСКО тізіміндегі беделі артып келеді. Жаңа тренд — жеке номинациялардан
-                гөрі, Орталық Азия елдерімен біріккен <span class="text-brand-gold">трансшекаралық номинацияларға</span>
-                басымдық беру. Бұл "Түркі әлемінің" ортақ мұрасын дәріптеу саясатына сай келеді.
-            </p>
-
-            <div class="inline-flex flex-col sm:flex-row gap-4 items-center justify-center">
-                <div class="px-6 py-3 bg-brand-gold text-brand-dark font-medium rounded-lg">
-                    Түркі әлемінің ортақ мұрасы
-                </div>
-                <div class="px-6 py-3 border border-brand-gold/30 text-brand-gold rounded-lg">
-                    Орталық Азия ынтымақтастығы
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ======================= FOOTER ======================= -->
-    <footer class="relative z-10 py-16 border-t border-brand-gold/10">
-        <div class="max-w-7xl mx-auto px-6 md:px-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                <div>
-                    <p class="font-display text-2xl md:text-3xl text-brand-gold italic">«Мәдени мұра»</p>
-                    <p class="text-sm opacity-40 mt-1">Ұлттық тарихты түгендеп берсе, ЮНЕСКО тізімі сол тарихты әлемдік
-                        брендке айналдырды.</p>
-                </div>
-                <div class="text-center">
-                    <div class="inline-block p-4 rounded-full border border-brand-gold/20">
-                        <svg class="w-12 h-12 text-brand-gold" viewBox="0 0 100 100" fill="none" stroke="currentColor"
-                            stroke-width="1">
-                            <circle cx="50" cy="50" r="45" />
-                            <circle cx="50" cy="50" r="15" />
-                            <path d="M50 5 L50 95 M5 50 L95 50" opacity="0.5" />
+                <!-- Scroll Indicator -->
+                <div id="scroll-indicator"
+                    class="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 z-20 animate-bounce opacity-60">
+                    <div class="w-11 h-11 flex items-center justify-center">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M12 5v14M19 12l-7 7-7-7" />
                         </svg>
                     </div>
                 </div>
-                <div class="text-right">
-                    <p class="text-xs opacity-40 font-mono">© 2026 QAZAQSTAN UNESCO HERITAGE</p>
-                    <p class="text-xs opacity-40 font-mono mt-1">DIGITAL STEPPE PROJECT</p>
-                </div>
             </div>
         </div>
-    </footer>
+
+        <!-- ======================= INTRODUCTION SECTION ======================= -->
+        <section id="intro" class="relative z-10 py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                <div class="lg:col-span-4">
+                    <span
+                        class="section-title text-brand-gold text-lg md:text-xl font-display italic block mb-4">Кіріспе</span>
+                    <p class="text-xs uppercase tracking-widest opacity-40">1992 — Бүгінгі күн</p>
+                </div>
+                <div class="lg:col-span-8">
+                    <p class="text-xl md:text-2xl lg:text-3xl font-light leading-relaxed mb-8">
+                        Қазақстан Республикасы <span class="text-brand-gold font-medium">1992 жылдан</span> бастап
+                        ЮНЕСКО-ның толыққанды мүшесі болып табылады. Бүгінгі таңда біздің мәдени мұрамыз екі негізгі
+                        бағыт
+                        бойынша әлемдік деңгейде қорғалуда.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-brand-gold/20 pt-8">
+                        <div class="group">
+                            <div
+                                class="text-4xl md:text-5xl font-display text-brand-gold mb-3 group-hover:scale-105 transition-transform origin-left">
+                                01</div>
+                            <h3 class="text-lg md:text-xl font-display mb-3">Дүниежүзілік мұра тізімі</h3>
+                            <p class="text-sm opacity-60 leading-relaxed">World Heritage List – материалдық нысандар:
+                                кесенелер, табиғи қорықтар, археологиялық ескерткіштер және сәулет мұралары.</p>
+                        </div>
+                        <div class="group">
+                            <div
+                                class="text-4xl md:text-5xl font-display text-brand-gold mb-3 group-hover:scale-105 transition-transform origin-left">
+                                02</div>
+                            <h3 class="text-lg md:text-xl font-display mb-3">Материалдық емес мұра</h3>
+                            <p class="text-sm opacity-60 leading-relaxed">Intangible Cultural Heritage – рухани
+                                құндылықтар:
+                                салт-дәстүрлер, өнер түрлері, ұлттық ойындар, білім мен дағдылар.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= INTANGIBLE HERITAGE SHOWCASE ======================= -->
+        <section id="heritage" class="relative z-10 py-16 md:py-24 bg-brand-darker">
+            <div class="max-w-7xl mx-auto px-6 md:px-12">
+                <div class="text-center mb-16 md:mb-24">
+                    <span class="text-brand-gold uppercase tracking-widest text-xs mb-4 block">Материалдық емес мәдени
+                        мұра</span>
+                    <h2 class="section-title text-4xl md:text-5xl lg:text-7xl font-display">Асыл Мұра</h2>
+                    <p class="mt-6 text-sm md:text-base opacity-50 max-w-2xl mx-auto">Презентациямыздың негізгі "өзәгі"
+                        болатын үш ұлттық қазына — Наурыз, Киіз үй және Асық ату.</p>
+                </div>
+
+                <!-- ========= 1. NAURYZ ========= -->
+                <article class="heritage-card group mb-24 md:mb-32">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                        <div
+                            class="order-2 lg:order-1 relative aspect-square lg:aspect-[4/5] w-full overflow-hidden rounded-2xl">
+                            <img src="images/nauryz.png" alt="Наурыз мейрамы - қазақтың көктемгі мерекесі"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                loading="lazy">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent">
+                            </div>
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <span
+                                    class="inline-block px-3 py-1 bg-brand-gold/20 backdrop-blur-sm text-brand-gold text-xs rounded-full">12
+                                    елмен бірлескен номинация</span>
+                            </div>
+                        </div>
+                        <div class="order-1 lg:order-2 py-4">
+                            <div class="flex items-center gap-4 mb-6">
+                                <span class="text-brand-gold text-xs tracking-widest font-mono">2016</span>
+                                <span class="w-12 h-px bg-brand-gold/30"></span>
+                                <span class="text-xs opacity-40">ЮНЕСКО</span>
+                            </div>
+                            <h3 class="text-3xl md:text-4xl lg:text-5xl font-display mb-6 leading-tight">Наурыз Мейрамы
+                            </h3>
+                            <p class="text-base md:text-lg opacity-70 mb-6 leading-relaxed">
+                                Ресми атауы: <em class="text-brand-gold">Наурыз: жаңару мейрамы</em>. Бұл жай ғана «жаңа
+                                жыл» емес, бұл — <strong>ғарыштық циклдің жаңаруы</strong>. Зерттеушілер Наурызды
+                                "синкретті
+                                мейрам" деп атайды, өйткені ол зороастризм, тәңіршілдік және ислам мәдениетінің
+                                элементтерін
+                                біріктірген.
+                            </p>
+
+                            <div class="space-y-4 mb-8">
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-brand-gold/10 flex items-center justify-center flex-shrink-0 mt-1">
+                                        <svg class="w-4 h-4 text-brand-gold" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-sm mb-1">Әлеуметтік функция</h4>
+                                        <p class="text-sm opacity-50">Ренжіскендерді татуластыру, «Самарқанның көк тасы
+                                            еруі» метафорасы арқылы қоғамдық келісімді нығайту.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-brand-gold/10 flex items-center justify-center flex-shrink-0 mt-1">
+                                        <svg class="w-4 h-4 text-brand-gold" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-sm mb-1">Экологиялық аспект</h4>
+                                        <p class="text-sm opacity-50">«Бұлақ көрсең – көзін аш» дәстүрі арқылы табиғат
+                                            пен
+                                            адам арасындағы гармонияны насихаттау.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1 border border-brand-gold/20 text-xs rounded-full opacity-60">Трансшекаралық</span>
+                                <span
+                                    class="px-3 py-1 border border-brand-gold/20 text-xs rounded-full opacity-60">Иран</span>
+                                <span
+                                    class="px-3 py-1 border border-brand-gold/20 text-xs rounded-full opacity-60">Түркия</span>
+                                <span
+                                    class="px-3 py-1 border border-brand-gold/20 text-xs rounded-full opacity-60">Әзербайжан</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ========= 2. YURT ========= -->
+                <article class="heritage-card group mb-24 md:mb-32">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                        <div class="py-4">
+                            <div class="flex items-center gap-4 mb-6">
+                                <span class="text-brand-gold text-xs tracking-widest font-mono">2014</span>
+                                <span class="w-12 h-px bg-brand-gold/30"></span>
+                                <span class="text-xs opacity-40">ЮНЕСКО</span>
+                            </div>
+                            <h3 class="text-3xl md:text-4xl lg:text-5xl font-display mb-6 leading-tight">Киіз Үй</h3>
+                            <p class="text-base md:text-lg opacity-70 mb-6 leading-relaxed">
+                                Ресми атауы: <em class="text-brand-gold">Қазақ және қырғыз киіз үйлерін дайындау
+                                    шеберлігі</em>. Киіз үй – көшпенділердің <strong>инженерлік ойының шыңы</strong>,
+                                табиғатпен үйлесімділік пен практикалық даналықтың символы.
+                            </p>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                                <div class="p-4 bg-white/5 rounded-lg border border-white/5">
+                                    <div class="text-brand-gold font-display text-2xl mb-2">Шаңырақ</div>
+                                    <p class="text-xs opacity-50">Күн мен аспанның символы</p>
+                                </div>
+                                <div class="p-4 bg-white/5 rounded-lg border border-white/5">
+                                    <div class="text-brand-gold font-display text-2xl mb-2">Кереге</div>
+                                    <p class="text-xs opacity-50">Әлемнің шекарасы</p>
+                                </div>
+                                <div class="p-4 bg-white/5 rounded-lg border border-white/5">
+                                    <div class="text-brand-gold font-display text-2xl mb-2">Босаға</div>
+                                    <p class="text-xs opacity-50">Екі әлемнің түйісу нүктесі</p>
+                                </div>
+                            </div>
+
+                            <ul class="space-y-2 text-sm opacity-60">
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span>
+                                    Шегесіз құрастырылатын конструкция
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span>
+                                    Аэродинамикалық пішін — дауылға төзімді
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span>
+                                    Сейсмикалық қауіпсіз баспана
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="relative aspect-square lg:aspect-[4/5] w-full overflow-hidden rounded-2xl">
+                            <img src="images/yurt.png" alt="Қазақ киіз үйі - көшпенділердің инженерлік шедеврі"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                loading="lazy">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent">
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ========= 3. ASYK ========= -->
+                <article class="heritage-card group mb-24 md:mb-32">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                        <div
+                            class="order-2 lg:order-1 relative aspect-square lg:aspect-[4/5] w-full overflow-hidden rounded-2xl">
+                            <img src="images/asyk.png" alt="Асық ату - қазақтың ұлттық ойыны"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                loading="lazy">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent">
+                            </div>
+                        </div>
+                        <div class="order-1 lg:order-2 py-4">
+                            <div class="flex items-center gap-4 mb-6">
+                                <span class="text-brand-gold text-xs tracking-widest font-mono">2017</span>
+                                <span class="w-12 h-px bg-brand-gold/30"></span>
+                                <span class="text-xs opacity-40">ЮНЕСКО</span>
+                            </div>
+                            <h3 class="text-3xl md:text-4xl lg:text-5xl font-display mb-6 leading-tight">Асық Ату</h3>
+                            <p class="text-base md:text-lg opacity-70 mb-6 leading-relaxed">
+                                Асық ату – жай ғана балалар ермегі емес, ол – <strong>бастапқы әскери-стратегиялық
+                                    дайындық
+                                    жүйесі</strong>. Ойын барысында көз өлшеу, траекторияны есептеу және қол моторикасы
+                                дамиды.
+                            </p>
+
+                            <div class="space-y-4 mb-8">
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-brand-gold/10 flex items-center justify-center flex-shrink-0 mt-1">
+                                        <svg class="w-4 h-4 text-brand-gold" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-sm mb-1">Мергендік пен физика</h4>
+                                        <p class="text-sm opacity-50">Ойын барысында көз өлшеу, траекторияны есептеу
+                                            және
+                                            қол моторикасы дамиды.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-brand-gold/10 flex items-center justify-center flex-shrink-0 mt-1">
+                                        <svg class="w-4 h-4 text-brand-gold" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-sm mb-1">Әлеуметтену</h4>
+                                        <p class="text-sm opacity-50">«Хан талапай», «Үш табан» сияқты түрлері балаларды
+                                            командалық жұмысқа және бәсекелестікке баулиды.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-brand-gold/10 flex items-center justify-center flex-shrink-0 mt-1">
+                                        <svg class="w-4 h-4 text-brand-gold" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-sm mb-1">Символизм</h4>
+                                        <p class="text-sm opacity-50">Асық – береке мен байлықтың символы. «Алтын сақа»
+                                            — ең
+                                            құнды асық, жеңісшінің белгісі.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ======================= RECENT ADDITIONS (2022+) ======================= -->
+        <section class="relative z-10 py-16 md:py-24 border-t border-brand-gold/10">
+            <div class="max-w-7xl mx-auto px-6 md:px-12">
+                <div class="text-center mb-16">
+                    <span class="text-brand-gold uppercase tracking-widest text-xs mb-4 block">Соңғы қосылғандар</span>
+                    <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-display">Жаңа Номинациялар</h2>
+                    <p class="mt-4 text-sm opacity-50 max-w-xl mx-auto">2022 жылдан бері ЮНЕСКО тізіміне қосылған
+                        қазақтың
+                        мәдени қазыналары.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Orteke -->
+                    <div class="heritage-card group relative overflow-hidden rounded-2xl aspect-[4/3]">
+                        <img src="images/orteke.png" alt="Ортеке - қазақтың дәстүрлі қуыршағы"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/50 to-transparent">
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                            <span class="text-brand-gold text-xs tracking-widest font-mono">2022</span>
+                            <h3 class="text-2xl md:text-3xl font-display mt-2 mb-2">Ортеке</h3>
+                            <p class="text-sm opacity-60 max-w-sm">Дәстүрлі қуыршақ-жануар. Музыка мен қолөнердің тамаша
+                                синтезі — домбыра ырғағына билейтін тау ешкісі.</p>
+                        </div>
+                    </div>
+
+                    <!-- Eagle Hunting -->
+                    <div class="heritage-card group relative overflow-hidden rounded-2xl aspect-[4/3]">
+                        <img src="images/eagle-hunting.png" alt="Бүркітшілік - қазақтың аңшылық өнері"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/50 to-transparent">
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                            <span class="text-brand-gold text-xs tracking-widest font-mono">ЮНЕСКО</span>
+                            <h3 class="text-2xl md:text-3xl font-display mt-2 mb-2">Бүркітшілік</h3>
+                            <p class="text-sm opacity-60 max-w-sm">Бүркітпен аңшылық өнері. Адам мен жыртқыш құстың
+                                мыңжылдық достығы. Алтай тауларының мұрасы.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= WORLD HERITAGE SITES ======================= -->
+        <section class="relative z-10 py-16 md:py-24 bg-brand-darker">
+            <div class="max-w-7xl mx-auto px-6 md:px-12">
+                <div class="text-center mb-16">
+                    <span class="text-brand-gold uppercase tracking-widest text-xs mb-4 block">Дүниежүзілік мұра
+                        тізімі</span>
+                    <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-display">Материалдық Мұра</h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                    <div class="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+                        <img src="images/yasawi.png" alt="Қожа Ахмет Ясауи кесенесі - ЮНЕСКО мұрасы"
+                            class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent">
+                        </div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <span
+                                class="inline-block px-3 py-1 bg-brand-gold text-brand-dark text-xs rounded-full font-medium">2003
+                                жылдан ЮНЕСКО тізімінде</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl md:text-3xl font-display mb-4">Қожа Ахмет Ясауи Кесенесі</h3>
+                        <p class="text-base opacity-70 mb-6 leading-relaxed">
+                            Түркістан қаласындағы ұлы сопы Қожа Ахмет Ясауидің мазары. Әмір Темірдің бұйрығымен XIV
+                            ғасырда
+                            салынған бұл ғимарат — орта азиялық сәулет өнерінің шедеврі.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-4 bg-white/5 rounded-lg">
+                                <div class="text-2xl font-display text-brand-gold">XIV</div>
+                                <p class="text-xs opacity-50">Ғасыр</p>
+                            </div>
+                            <div class="p-4 bg-white/5 rounded-lg">
+                                <div class="text-2xl font-display text-brand-gold">2 тонна</div>
+                                <p class="text-xs opacity-50">Тайқазан салмағы</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Archaeological Heritage -->
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div
+                        class="heritage-card p-6 bg-white/5 rounded-xl border border-white/5 hover:border-brand-gold/20 transition-colors">
+                        <div class="aspect-square mb-4 overflow-hidden rounded-lg">
+                            <img src="images/golden-warrior.png" alt="Алтын адам - сақ жауынгері"
+                                class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <h4 class="font-display text-xl mb-2">Алтын Адам</h4>
+                        <p class="text-sm opacity-50">Есік қорғанынан табылған сақ дәуірінің алтын киімді жауынгері.
+                            Қазақстанның ұлттық символы.</p>
+                    </div>
+                    <div
+                        class="heritage-card p-6 bg-white/5 rounded-xl border border-white/5 hover:border-brand-gold/20 transition-colors">
+                        <div class="aspect-square mb-4 overflow-hidden rounded-lg">
+                            <img src="images/silk-road.png" alt="Ұлы Жібек Жолы - керуен"
+                                class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                                loading="lazy">
+                        </div>
+                        <h4 class="font-display text-xl mb-2">Жібек Жолы</h4>
+                        <p class="text-sm opacity-50">Талғар, Қаялық, Ақыртас — Ұлы Жібек жолындағы археологиялық
+                            нысандар
+                            ЮНЕСКО тізімінде.</p>
+                    </div>
+                    <div
+                        class="heritage-card p-6 bg-white/5 rounded-xl border border-white/5 hover:border-brand-gold/20 transition-colors">
+                        <div class="aspect-square mb-4 overflow-hidden rounded-lg">
+                            <img src="images/botai.png" alt="Ботай қонысы - жылқыны қолға үйрету"
+                                class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                                loading="lazy">
+                        </div>
+                        <h4 class="font-display text-xl mb-2">Ботай Қонысы</h4>
+                        <p class="text-sm opacity-50">Жылқыны алғаш қолға үйреткен орын. Адамзат тарихындағы маңызды
+                            жаңалық.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= STATISTICS (Cultural Heritage Program) ======================= -->
+        <section id="program" class="relative z-10 py-24 md:py-32 border-t border-brand-gold/10">
+            <div class="max-w-7xl mx-auto px-6 md:px-12">
+                <div class="text-center mb-16 md:mb-20">
+                    <span class="text-brand-gold uppercase tracking-widest text-xs mb-4 block">2004–2011</span>
+                    <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-display">«Мәдени Мұра» Бағдарламасы
+                    </h2>
+                    <p class="mt-4 text-sm md:text-base opacity-50 max-w-2xl mx-auto">
+                        Бұл бағдарлама Қазақстанның ЮНЕСКО-дағы қазіргі жетістіктерінің іргетасы болды. Стратегиялық
+                        мақсаты
+                        — тарихи-мәдени ескерткіштерді түгендеу және қалпына келтіру.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 text-center">
+                    <div
+                        class="p-6 md:p-8 border border-white/5 bg-white/5 rounded-xl hover:border-brand-gold/30 transition-colors group">
+                        <div class="text-4xl md:text-5xl lg:text-6xl font-display text-brand-gold mb-2 stat-value group-hover:scale-110 transition-transform"
+                            data-value="78">78</div>
+                        <div class="text-xs md:text-sm uppercase tracking-wide opacity-70">Ескерткіш<br>қалпына
+                            келтірілді
+                        </div>
+                    </div>
+                    <div
+                        class="p-6 md:p-8 border border-white/5 bg-white/5 rounded-xl hover:border-brand-gold/30 transition-colors group">
+                        <div class="text-4xl md:text-5xl lg:text-6xl font-display text-brand-gold mb-2 stat-value group-hover:scale-110 transition-transform"
+                            data-value="26">26</div>
+                        <div class="text-xs md:text-sm uppercase tracking-wide opacity-70">Ғылыми<br>Экспедиция</div>
+                    </div>
+                    <div
+                        class="p-6 md:p-8 border border-white/5 bg-white/5 rounded-xl hover:border-brand-gold/30 transition-colors group">
+                        <div class="text-4xl md:text-5xl lg:text-6xl font-display text-brand-gold mb-2 stat-value group-hover:scale-110 transition-transform"
+                            data-value="100">100</div>
+                        <div class="text-xs md:text-sm uppercase tracking-wide opacity-70">Томдық<br>«Бабалар сөзі»
+                        </div>
+                    </div>
+                    <div
+                        class="p-6 md:p-8 border border-white/5 bg-white/5 rounded-xl hover:border-brand-gold/30 transition-colors group">
+                        <div class="text-4xl md:text-5xl lg:text-6xl font-display text-brand-gold mb-2 stat-value group-hover:scale-110 transition-transform"
+                            data-value="5000">5000</div>
+                        <div class="text-xs md:text-sm uppercase tracking-wide opacity-70">Тарихи<br>Қолжазба</div>
+                    </div>
+                </div>
+
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="p-6 border-l-2 border-brand-gold/30">
+                        <h4 class="font-display text-lg mb-2">Реставрация</h4>
+                        <p class="text-sm opacity-50">78 тарихи ескерткіш қалпына келтірілді, оның ішінде 28-і толық
+                            жаңғыртылды. Қожа Ахмет Ясауи, Арыстанбаб, Отырар қалашығы.</p>
+                    </div>
+                    <div class="p-6 border-l-2 border-brand-gold/30">
+                        <h4 class="font-display text-lg mb-2">Археология</h4>
+                        <p class="text-sm opacity-50">Шілікті, Берел қорғандарындағы "Алтын адам" олжалары зерттелді.
+                            Ботай
+                            қонысы — жылқыны қолға үйрету орталығы ашылды.</p>
+                    </div>
+                    <div class="p-6 border-l-2 border-brand-gold/30">
+                        <h4 class="font-display text-lg mb-2">Мұрағаттар</h4>
+                        <p class="text-sm opacity-50">Қытай, Түркия, Еуропа мұрағаттарынан Қазақстан тарихына қатысты
+                            5000-ға жуық құнды құжаттар әкелінді.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= FUTURE / PERSPECTIVE ======================= -->
+        <section id="future" class="relative z-10 py-24 md:py-32 bg-gradient-to-b from-brand-darker to-brand-dark">
+            <div class="max-w-4xl mx-auto px-6 md:px-12 text-center">
+                <span class="text-brand-gold uppercase tracking-widest text-xs mb-4 block">Перспектива</span>
+                <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-display mb-8">2025–2026</h2>
+                <p class="text-lg md:text-xl opacity-70 leading-relaxed mb-12">
+                    Қазіргі таңда Қазақстанның ЮНЕСКО тізіміндегі беделі артып келеді. Жаңа тренд — жеке номинациялардан
+                    гөрі, Орталық Азия елдерімен біріккен <span class="text-brand-gold">трансшекаралық
+                        номинацияларға</span>
+                    басымдық беру. Бұл "Түркі әлемінің" ортақ мұрасын дәріптеу саясатына сай келеді.
+                </p>
+
+                <div class="inline-flex flex-col sm:flex-row gap-4 items-center justify-center">
+                    <div class="px-6 py-3 bg-brand-gold text-brand-dark font-medium rounded-lg">
+                        Түркі әлемінің ортақ мұрасы
+                    </div>
+                    <div class="px-6 py-3 border border-brand-gold/30 text-brand-gold rounded-lg">
+                        Орталық Азия ынтымақтастығы
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= FOOTER ======================= -->
+        <footer class="relative z-10 py-12 md:py-16 border-t border-brand-gold/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 items-center text-center md:text-left">
+                    <div class="order-2 md:order-1">
+                        <p class="font-display text-xl sm:text-2xl md:text-3xl text-brand-gold italic">«Мәдени мұра»</p>
+                        <p class="text-xs sm:text-sm opacity-40 mt-1 max-w-xs mx-auto md:mx-0">Ұлттық тарихты түгендеп
+                            берсе, ЮНЕСКО тізімі сол тарихты әлемдік
+                            брендке айналдырды.</p>
+                    </div>
+                    <div class="order-1 md:order-2 flex justify-center">
+                        <div class="inline-block p-3 sm:p-4 rounded-full border border-brand-gold/20">
+                            <svg class="w-10 h-10 sm:w-12 sm:h-12 text-brand-gold" viewBox="0 0 100 100" fill="none"
+                                stroke="currentColor" stroke-width="1">
+                                <circle cx="50" cy="50" r="45" />
+                                <circle cx="50" cy="50" r="15" />
+                                <path d="M50 5 L50 95 M5 50 L95 50" opacity="0.5" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="order-3 md:text-right">
+                        <p class="text-[10px] sm:text-xs opacity-40 font-mono">© 2026 QAZAQSTAN UNESCO HERITAGE</p>
+                        <p class="text-[10px] sm:text-xs opacity-40 font-mono mt-1">DIGITAL STEPPE PROJECT</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
 
     <!-- Script Hook -->
     <script src="script.js"></script>
