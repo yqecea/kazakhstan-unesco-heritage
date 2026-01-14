@@ -373,9 +373,11 @@ document.addEventListener("DOMContentLoaded", () => {
             end: "bottom bottom",
             snap: {
                 snapTo: [0, 0.35, 0.70, 1],
-                duration: { min: 0.2, max: 0.6 },
-                delay: 0.05,
-                ease: "power1.inOut"
+                duration: { min: 0.4, max: 1.2 },
+                delay: 0,
+                ease: "power2.inOut",
+                inertia: false,
+                directional: false
             }
         });
     } else {
@@ -555,9 +557,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Snap to 4 positions: 0%, 35%, 70%, 100%
                 snap: {
                     snapTo: [0, 0.35, 0.70, 1],
-                    duration: { min: 0.3, max: 0.8 },
-                    delay: 0.1,
-                    ease: "power1.inOut"
+                    duration: { min: 0.4, max: 1.2 },
+                    delay: 0,
+                    ease: "power2.inOut",
+                    inertia: false,
+                    directional: false
                 },
                 onUpdate: (self) => {
                     const frameIndex = Math.min(
