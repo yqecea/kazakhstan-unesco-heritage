@@ -365,6 +365,19 @@ document.addEventListener("DOMContentLoaded", () => {
         heroMobileVideo.play().catch(() => {
             // Autoplay failed, video will show first frame
         });
+
+        // Add scroll snapping for mobile text transitions
+        ScrollTrigger.create({
+            trigger: "#scrollytelling-hero",
+            start: "top top",
+            end: "bottom bottom",
+            snap: {
+                snapTo: [0, 0.35, 0.70, 1],
+                duration: { min: 0.2, max: 0.6 },
+                delay: 0.05,
+                ease: "power1.inOut"
+            }
+        });
     } else {
         // Desktop: Use scroll-triggered frame animation
         if (heroMobileVideo) {
@@ -532,13 +545,20 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!isMobileDevice) {
         preloadFrames();
 
-        // GSAP ScrollTrigger for frame animation
+        // GSAP ScrollTrigger for frame animation with SNAPPING
         gsap.to({}, {
             scrollTrigger: {
                 trigger: "#scrollytelling-hero",
                 start: "top top",
                 end: "bottom bottom",
                 scrub: 0.3,
+                // Snap to 4 positions: 0%, 35%, 70%, 100%
+                snap: {
+                    snapTo: [0, 0.35, 0.70, 1],
+                    duration: { min: 0.3, max: 0.8 },
+                    delay: 0.1,
+                    ease: "power1.inOut"
+                },
                 onUpdate: (self) => {
                     const frameIndex = Math.min(
                         frameCount - 1,
