@@ -438,12 +438,16 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
+        // Detect mobile for optimized frames (960px vs 1920px)
+        const isMobile = window.innerWidth <= 768 || deviceCapabilities.hasTouch;
+        const framesFolder = isMobile ? 'frames_mobile' : 'frames';
+
         // Load a single frame
         function loadFrame(frameNum) {
             return new Promise((resolve) => {
                 const img = new Image();
                 const paddedIndex = String(frameNum).padStart(3, '0');
-                img.src = `frames/ezgif-frame-${paddedIndex}.webp`;
+                img.src = `${framesFolder}/ezgif-frame-${paddedIndex}.webp`;
 
                 img.onload = () => {
                     imagesLoaded++;
