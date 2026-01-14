@@ -478,9 +478,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // Detect mobile for optimized frames (960px vs 1920px)
-        const isMobile = window.innerWidth <= 768 || deviceCapabilities.hasTouch;
-        const framesFolder = isMobile ? 'frames_mobile' : 'frames';
+        // Desktop always uses full-quality frames folder
+        const framesFolder = 'frames';
 
         // Load a single frame
         function loadFrame(frameNum) {
