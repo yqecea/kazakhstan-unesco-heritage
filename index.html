@@ -37,10 +37,11 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 
-    <!-- GSAP & Lenis -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <!-- GSAP 3.13.0 & Lenis 1.3.11 -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.3.11/dist/lenis.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.11/dist/lenis.css">
 </head>
 
 <body class="bg-brand-dark text-brand-gray antialiased selection:bg-brand-gold selection:text-brand-dark">
@@ -214,11 +215,8 @@
                 <canvas id="scroll-canvas" class="absolute inset-0 w-full h-full"></canvas>
 
                 <!-- Mobile Video (hidden by default, shown on mobile) -->
-                <video id="hero-mobile-video" 
-                       class="absolute inset-0 w-full h-full object-cover hidden"
-                       src="assets/hero-mobile.mp4"
-                       autoplay muted loop playsinline
-                       aria-hidden="true">
+                <video id="hero-mobile-video" class="absolute inset-0 w-full h-full object-cover hidden"
+                    src="assets/hero-mobile.mp4" autoplay muted loop playsinline aria-hidden="true">
                 </video>
 
                 <!-- Vignette Overlay -->
